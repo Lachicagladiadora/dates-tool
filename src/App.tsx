@@ -29,6 +29,74 @@ function App() {
   const [firstDate, setFirstDate] = useState<Date>(new Date());
   const [secondDate, setSecondDate] = useState<Date>(new Date());
 
+  const calculateMiliseconds = (date1: Date, date2: Date): string => {
+    const year1 = date1.getFullYear() * 365 * (24 * (3600 * 1000));
+    const month1 =
+      (date1.getMonth() + 1) *
+      DAYS_OF_MONTH[date1.getMonth()] *
+      (24 * (3600 * 1000));
+    const day1 = date1.getDate() * (24 * (3600 * 1000));
+
+    const year2 = date2.getFullYear() * 365 * (24 * (3600 * 1000));
+    const month2 =
+      (date2.getMonth() + 1) *
+      DAYS_OF_MONTH[date2.getMonth()] *
+      (24 * (3600 * 1000));
+    const day2 = date2.getDate() * (24 * (3600 * 1000));
+
+    return `${Math.abs(year2 + month2 + day2 - (year1 + month1 + day1)).toFixed(
+      1
+    )}`;
+  };
+
+  const calculateSeconds = (date1: Date, date2: Date): string => {
+    const year1 = date1.getFullYear() * 365 * (24 * 3600);
+    const month1 =
+      (date1.getMonth() + 1) * DAYS_OF_MONTH[date1.getMonth()] * (24 * 3600);
+    const day1 = date1.getDate() * (24 * 3600);
+
+    const year2 = date2.getFullYear() * 365 * (24 * 3600);
+    const month2 =
+      (date2.getMonth() + 1) * DAYS_OF_MONTH[date2.getMonth()] * (24 * 3600);
+    const day2 = date2.getDate() * (24 * 3600);
+
+    return `${Math.abs(year2 + month2 + day2 - (year1 + month1 + day1)).toFixed(
+      1
+    )}`;
+  };
+
+  const calculateMinutes = (date1: Date, date2: Date): string => {
+    const year1 = date1.getFullYear() * 365 * (24 * 60);
+    const month1 =
+      (date1.getMonth() + 1) * DAYS_OF_MONTH[date1.getMonth()] * (24 * 60);
+    const day1 = date1.getDate() * (24 * 60);
+
+    const year2 = date2.getFullYear() * 365 * (24 * 60);
+    const month2 =
+      (date2.getMonth() + 1) * DAYS_OF_MONTH[date2.getMonth()] * (24 * 60);
+    const day2 = date2.getDate() * (24 * 60);
+
+    return `${Math.abs(year2 + month2 + day2 - (year1 + month1 + day1)).toFixed(
+      1
+    )}`;
+  };
+
+  const calculateHours = (date1: Date, date2: Date): string => {
+    const year1 = date1.getFullYear() * 365 * 24;
+    const month1 =
+      (date1.getMonth() + 1) * DAYS_OF_MONTH[date1.getMonth()] * 24;
+    const day1 = date1.getDate() * 24;
+
+    const year2 = date2.getFullYear() * 365 * 24;
+    const month2 =
+      (date2.getMonth() + 1) * DAYS_OF_MONTH[date2.getMonth()] * 24;
+    const day2 = date2.getDate() * 24;
+
+    return `${Math.abs(year2 + month2 + day2 - (year1 + month1 + day1)).toFixed(
+      1
+    )}`;
+  };
+
   const calculateDays = (date1: Date, date2: Date): string => {
     // mejorar considerando los anos bisiestos
     const year1 = date1.getFullYear() * 365;
@@ -121,10 +189,14 @@ function App() {
           </div>
           <h3>Result in:</h3>
           <div>
+            <p>Miliseconds: {calculateMiliseconds(firstDate, secondDate)}</p>
+            <p>Seconds: {calculateSeconds(firstDate, secondDate)}</p>
+            <p>Minutes: {calculateMinutes(firstDate, secondDate)}</p>
+            <p>Hours: {calculateHours(firstDate, secondDate)}</p>
             <p>Days: {calculateDays(firstDate, secondDate)}</p>
-            <p>Year: {calculateMonths(firstDate, secondDate)}</p>
-            <p>Year: {calculateYears(firstDate, secondDate)}</p>
             <p>Weeks: {calculateWeeks(firstDate, secondDate)}</p>
+            <p>Months: {calculateMonths(firstDate, secondDate)}</p>
+            <p>Year: {calculateYears(firstDate, secondDate)}</p>
           </div>
         </section>
       </div>
