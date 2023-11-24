@@ -157,19 +157,35 @@ function App() {
   };
 
   return (
-    <main style={{ display: "flex", gap: "20px", maxWidth: "1000px" }}>
+    <main style={{ display: "flex", gap: "80px", width: "100%" }}>
       {/* menu */}
-      <div>
+      <div style={{ padding: "40px" }}>
         <p>Number of dates</p>
       </div>
       {/* content */}
-      <div style={{ flex: "1" }}>
-        <h1>Number of dates</h1>
+      <div
+        style={{
+          padding: "40px",
+          paddingRight: "150px",
+          flex: "1",
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px",
+        }}
+      >
+        <h1 style={{ textAlign: "center" }}>Number of dates</h1>
         <p>Calculate the number of days between two dates</p>
-        <section>
+        <section
+          style={{
+            flex: "1",
+            display: "flex",
+            flexDirection: "column",
+            gap: "30px",
+          }}
+        >
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <div style={{ border: "solid 2px royalblue", padding: "10px" }}>
-              <label htmlFor="first-date">First Date</label>
+            <div style={{ padding: "10px" }}>
+              <label htmlFor="first-date">First Date:</label>{" "}
               <input
                 id="first-date"
                 type="date"
@@ -177,8 +193,8 @@ function App() {
                 onChange={(e) => setFirstDate(mapYYMMDDToDate(e.target.value))}
               />
             </div>
-            <div style={{ border: "solid 2px royalblue", padding: "10px" }}>
-              <label htmlFor="second-date">Second Date</label>
+            <div style={{ padding: "10px" }}>
+              <label htmlFor="second-date">Second Date:</label>{" "}
               <input
                 id="second-date"
                 type="date"
@@ -187,8 +203,8 @@ function App() {
               />
             </div>
           </div>
-          <h3>Result in:</h3>
           <div>
+            <h3>Result in:</h3>
             <p>Miliseconds: {calculateMiliseconds(firstDate, secondDate)}</p>
             <p>Seconds: {calculateSeconds(firstDate, secondDate)}</p>
             <p>Minutes: {calculateMinutes(firstDate, secondDate)}</p>
@@ -205,8 +221,3 @@ function App() {
 }
 
 export default App;
-// hours
-// minutes
-// seconds
-// miliseconds
-// semanas
